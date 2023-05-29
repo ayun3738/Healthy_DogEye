@@ -1,0 +1,76 @@
+결막염 conjunctivitis
+궤양각막 corneal_ulcer
+각막 corneal
+백내장 Cataract
+색소침착성 각막염 PIH
+
+안검염 blepharitis
+안검종양 Xanthelasma
+안검 내반증 Entropion
+유루증 epiphora
+핵경화 Nuclear_Sclerosis
+
+0316
+1. 원래 evaluate -> 그려보자 y 정확도 x inference time 모델 선정 **
+2. 1번을 측정하는 기준? ppt 보여주기용? crawling -> 일반적인 비정제 데이터이므로 test inference로 활용 가능
+3. 
+
+0317
+1. AI 허브 원본데이터 -> 일반카메라, 스마트폰만 추출 -> .jpg, .json 정리 (data_for_resize.py)
+: 사진들의 사이즈가 다름을 확인 -> 후에 resize가 필요해 보임
+
+0320
+1. ppt도 같이 제작하면서 프로젝트 진행
+2. 간단한 dnn 모델 설계
+3. 일반카메라, 스마트폰, 검안경 데이터를 사용하기로 결정
+
+0321
+1. 간단한 dnn epoch 4만에 과적합 -> 데이터 사이즈 112, gray scale, zero-centering, dropout, augmentation 
+2. flow_from_directory 활용해서 모든 데이터 각각 학습 가능 -> multi binary model
+3. model selection(resnet, transformer)
+
+0322
+1. label smoothing -> 0.9로 해서 일반화
+2. voting해서 결과 도출 -> 모델을 일반화하는 행동 (과적합 여러개로 voting하면 효과가 좋음 -> 데이터를 분할하여 모델학습하고 voting하는 법도 있음)
+-> 기준..? 0.7? 0.3? 데이터 불균형을 고려한 기준을 지표로 잡는건 어떨까 ex) 1-9000, 0-1000 -> 0.9를 넘겨야 1이라고 하기.
+3. flow_from_directory 실제 구현 준비(이미지 정리-pickle말고)
+4. 간단하게 resnet transfer learning 9진행 -> f.c. layer + 10 layer 10 epoch -> full layer 10 epoch
+-> 오히려 뒤에 전체 weight를 업데이트 하니 성능이 줄었다 - resnet의 conv layer를 훼손한 느낌
+
+0323
+1. train test split의 비율 설정 -> 현재 test = 44116
+2. 상용화까지 생각하면 크롤링이 필수가 아닐까?
+3. 256 -> 224 random 추출 augmentation(AlexNet)
+4. confusion matrix를 추출해서 recall을 확인해서 줄이는 방향으로 설계
+
+5. multi-전처리 중요도 zero-centering , augmentation
+6. inference 구성
+
+0324
+1. evaluate 함수 직접구현 -> recall을 높일 수 있는 기준점을 다시 설정하기 (scatter plot으로 시각화) -> 0.3 이하(아님), 0.6이하(의심), 0.6이상(진단)
+2. multi model -> dense(256)하나 더 추가해보는건..? (Alexnet F.C.)
+
+
+3. binary - confusion matrix용 test set 생성 -> threshold 결정
+inference : img dataset input -> 한 이미지 10장 복사후 각각 모델에 input -> model.predict -> threshold 넘으면 리스트에 추가 -> 리스트 비었으면 정상, 있으면 있는것들 print
+4. multi - 데이터 재분배로 불균형 해소 + test set 생성
+5. inference - img dataset input -> model.predict -> top5 추출
+
+0328
+1. multi -> object detection이 필요해 보인다 ,ex) 안검염 안검종양
+
+ppt 꿀팁
+- 이미지를 먼저 본다
+- 강조하는 톤을 일관되게
+- 처음에 Attention을 줄것 (2중, 3중, 출처까지)
+-엔지니어링 10분 -> 흐름에 따를 것
+
+- 에스코어 드림 나눔류
+- 시스템 구성도 + 모델 비교표(parameter 표현)
+
+
+0329
+1. 평가용 test image-> augmentation을 통해 성능평가하는 방법? - test batch의 활용
+
+3조 
+데이터분포를 막대그래프로 표현(테이블 대신에)
