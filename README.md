@@ -1,27 +1,21 @@
 
-# 반려견을 위한 안구 질병 판별기
-<img src="">
+# 🐶반려견을 위한 안구 질병 판별기 🐶
+![슬픈 강아지](doc/saddog.PNG)
 
 
 ## 👨🏿‍🤝‍👨🏿Member
-[]() | []()
-:-: | :-: 
-<img src="" width="100" height="100"/>|<img src="" width="100" height="100">
-***				
-## Index
-- ### [Main Project](#main-project)
-- [📝Project Summary](#project-summary)
-- [🗓Procedures](#procedures)
-- [👨‍👩‍👧‍👧Team Roles](#team-roles)
-- [Features](#features)
-- [Result](#result)
-- [Conclusion](#conclusion)
-- ### [Appendix](#appendix)
-- [📁Folder Structure](#folder-structure)
-***
-## Main Project
-***
-### 📝Project Summary
+[노아윤](https://github.com/ayun3738) | [라허운](https://github.com/RAHEOUN) |[박진성](https://github.com/jinseong1170)|[서상혁](https://github.com/sseo1124)
+:-: | :-: | :-: | :-: 
+<a href="https://github.com/ayun3738"><img src="https://avatars.githubusercontent.com/u/96457781?v=4" width="100" height="100"/></a>|<a href="https://github.com/RAHEOUN"><img src="https://avatars.githubusercontent.com/u/70371980?v=4" width="100" height="100" ></a>|<a href="https://github.com/jinseong1170"><img src="https://avatars.githubusercontent.com/u/131628919?v=4" width="100" height="100" ></a>|<a href="https://github.com/sseo1124"><img src="https://avatars.githubusercontent.com/u/103694448?v=4" width="100" height="100" ></a>
+
+## 📋Index
+- [📝 Project Summary](#📝project-summary)
+- [👀 데이터셋 ](#👀-데이터셋 )
+- [📆 Procedures](#📆-Procedures)
+- [🔍 Conclusion](#🔍-Conclusion)
+- [⚒️ Appendix](#⚒️-Appendix)
+
+## 📝Project Summary
 - 개요
   > 딥러닝을 통해 10여가지의 반려견 안구 질병의 유무를 판단하여 고객들에게 수시로 핸드폰으로 반려견의 상태를 확인할 수 있는 판별기
 - 목적 및 배경
@@ -37,25 +31,26 @@
   - 라이브러리 : tensorflow, OpenCV, sklearn 
   - 개발 및 협업 툴 : python, colab notebook, vscode(windows), tensorboard  
 
-### 🐶데이터셋 
+## 👀 데이터셋 
 
-- [AIhub 반려동물 안구질환 데이터 ](https://aihub.or.kr/aihubdata/view.do?currMenu=100&aihubDataSe=realm&dataSetSn=562)
-  - 소개 : 국내 주요 반려동물 종류인 반려견과 반려묘에 대하여 내원율이
-가장 높은 안구질환을 기준으로 반려견 안구질환 12종, 반려묘 6종에 대해서 수집. 일반카메라뿐만 아니라 검안경, 안구 초음파 사진 등 다양한 유형의 사진들을 질환별로 수집ㆍ구축한 데이터
-  - 라벨 : 
-    - 1단계 : AI허브의 폴더구성에 따르면 질병별로 증상유무를 폴더로 구분해 놓아 이를 토대로 질병 유무 라벨링을 진행
-    - 2단계 : 라벨 json을 통해 일반카메라, 스마트폰, 검안경 안구 데이터만 선정
-  - 전체 이미지 개수 : 약 170,000장
-  - 10 class : 결막염 (conjunctivitis), 백내장 (Cataract), 안검염  (blepharitis), 비궤양성 각막염 (corneal), 궤양성 각막염 (corneal_ulcer), 안검 내반증 (Entropion), 유루증 (epiphora), 핵경화 (Nuclear_Sclerosis), 색소침착성 각막염 (PIH), 안검종양 (Xanthelasma)
-  - 이미지 크기 : (2304 x 1728) ~ (3264 x 2448) -> (224 x 224)
+### AIhub 반려동물 안구질환 데이터
+- 출처 : [AIhub 안구질환 데이터](https://aihub.or.kr/aihubdata/view.do?currMenu=100&aihubDataSe=realm&dataSetSn=562)
+- 소개 : 국내 주요 반려동물 종류인 반려견과 반려묘에 대하여 내원율이 가장 높은 안구질환을 기준으로 반려견 안구질환 12종, 반려묘 6종에 대해서 수집. 일반카메라뿐만 아니라 검안경, 안구 초음파 사진 등 다양한 유형의 사진들을 질환별로 수집ㆍ구축한 데이터
+- 라벨 : 
+  1. AI허브의 폴더구성에 따르면 질병별로 증상유무를 폴더로 구분해 놓아 이를 토대로 질병 유무 라벨링을 진행
+  2. : 라벨 json을 통해 일반카메라, 스마트폰, 검안경 안구 데이터만 선정
+- 전체 이미지 개수 : 약 170,000장
+- 10 class : 결막염 (conjunctivitis), 백내장 (Cataract), 안검염  (blepharitis), 비궤양성 각막염 (corneal), 궤양성 각막염 (corneal_ulcer), 안검 내반증 (Entropion), 유루증 (epiphora), 핵경화 (Nuclear_Sclerosis), 색소침착성 각막염 (PIH), 안검종양 (Xanthelasma)
+- 이미지 크기 : (2304 x 1728) ~ (3264 x 2448) -> (224 x 224)
 
 <img width="100%" src="https://user-images.githubusercontent.com/96457781/241615790-f3023c90-f3ae-4559-8f92-4b328c2d88b0.PNG"/>
 
 
-#### 🗓Procedures
+## 📆 Procedures
 
 >**[2023.03.10 ~ 2023.3.14]**  
 >- 프로젝트 주제 탐색 및 선정, 프로젝트 계획 구상
+![model](doc/binary_clfs.PNG)
 >- 여러 질병의 위험도를 각각 분석하기 위해 10개의 모델을 연결하는 pipeline을 구상
 ><br>
 >
@@ -67,70 +62,26 @@
 >
 >**[2023.03.22 ~ 2023.03.30]**
 >- Train, valid dataset 8:2 split
->- 1차 Model training and testing
->- 
->- 
-><br>
->
->**[2023.01.17 ~ 2023.01.24]**
->- 1차 Anomaly Detection model result 분석, 평가
->   - Annotating 대폭 수정 
->- OCR / Model serving Reference Searching 시작
->   - App service 계획이 있었으나 차후로 미룸.
-><br>
->
+>- Model training and testing
+>- test한 결과 바탕으로 부실한 모델들 데이터 전처리를 수정하여 모델학습 재진행
+>- 최종 모델의 test recall, f1_score 기준으로 sigmoid threshold를 결정 
+
+## 🔍 Conclusion
+
+### Inference
+![Inference](doc/dogeye1.PNG)
+한장 또는 여러장의 강아지 눈사진을 이용자가 찍으면, 의심되는 질병을 알려준다.
 
 
-### 👨‍👩‍👧‍👧Team Roles
-***
-| Member | Role |
-| ---- | ---- |
-|  | Data Processing(Anomaly Box Data), Model testing (Yolo v7, v8), OCR Modeling, Model web serving, Making Presentation File |
-|  | Data Processing(Anomaly Box Data, WayBill Data), Model testing (Yolo v4, EfficientDet), Reference Searching and studying, Presentation |
-***
+### Conclusion & Extension
+1. Classification에 대표적인 ResNet을 transfer learning하여 안구판별기 모델을 학습시켜 동작함을 확인했다.
+-> 단순 classfication 뿐 아니라 AIhub 데이터에 detection labeling도 있었으므로 이후 강아지 사진에서 detection, 안구판별까지 한번에 가능하리라 예상됨.
+2. 하드웨어적 한계로 이미지 크기를 224x224로 줄여서 학습시킬수 밖에 없었던 점이 아쉬웠다. -> 학습수준에서는 colab 노트북으로 프로젝트를 진행하였지만 추후 이미지 크기를 조정하면 더 정확한 판별기를 모델링할 수 있으리라 예상됨.
 
-### 🤍Conclusion
 
-잘한 점들
+## ⚒️ Appendix
 
-아쉬운 점들
 
-프로젝트를 통해 배운점
-
-### Appendix
-
-***
 | Reference | Git | Paper |
 | ---- | ---- | ---- |
-| ResNet | Data Processing(Anomaly Box Data), Model testing (Yolo v7, v8), OCR Modeling, Model web serving, Making Presentation File |
-
-***
-
-### 📁Folder Structure
-
-```
-├── Model
-│     ├── Yolo  ├── v4
-│     │		├── v5
-│     │		├── v7
-│     │		└── v8
-│     ├── CoreML (yolo v2, v3 based)
-│     └── EfficientDet ├── D0
-│     		       └── D1
-│  
-├── Dataset
-│     ├── Anomaly Box ├── Wet 2305
-│     │		      └── Hole 2231
-│     └── Waybill ├── CU 106
-│     	          └── GS 80
-│ 
-├── Serving  
-│     └── YOLOv8s  
-│   
-├── OCR  
-│     ├── 
-│     ├── 
-│     ├── 
-│     └── 
-```
----
+| ResNet | Data Processing(Anomaly Box Data), Model testing (Yolo v7, v8), OCR Modeling, Model web serving, Making Presentation File | [ResNet](https://arxiv.org/abs/1512.03385)
