@@ -65,6 +65,8 @@
 >- Model training and testing
 >- test한 결과 바탕으로 부실한 모델들 데이터 전처리를 수정하여 모델학습 재진행
 >- 최종 모델의 test recall, f1_score 기준으로 sigmoid threshold를 결정 
+>- 트레이닝 코드 : [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1wttQpRNUvzpR_7aRj26RqEl1iM8Jpo0D) &nbsp;
+
 
 ## 🔍 Conclusion
 
@@ -82,6 +84,6 @@
 ## ⚒️ Appendix
 
 
-| Reference | Git | Paper |
-| ---- | ---- | ---- |
-| ResNet | Data Processing(Anomaly Box Data), Model testing (Yolo v7, v8), OCR Modeling, Model web serving, Making Presentation File | [ResNet](https://arxiv.org/abs/1512.03385)
+| Reference | Paper |
+| ---- | ---- |
+| ResNet | <a href='https://arxiv.org/abs/1512.03385'><img src='https://img.shields.io/badge/ArXiv-PDF-red'></a> &nbsp; 
